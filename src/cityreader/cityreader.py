@@ -17,10 +17,12 @@
 
 class City:
 
-  def __init__(self, name, latitude, longitude):
+  def __init__(self, name, lat, lon):
     self.name = name
-    self.latitude = latitude
-    self.longitude = longitude
+    self.lat = lat
+    self.lon = lon
+
+import csv
 
 cities = []
 
@@ -28,19 +30,17 @@ def cityreader(cities=[]):
   # TODO Implement the functionality to read from the 'cities.csv' file
   # For each city record, create a new City instance and add it to the 
   # `cities` list
-    import csv
-
-    with open('cities.csv') as csvfile:
-      reader = csv.reader(csvfile, delimiter=',')
+    with open("cities.csv") as csvfile:
+      reader = csv.DictReader(csvfile, delimiter=',')
       for row in reader:
-        cities.append(City(row.city, row.lat, row.lng))
+        cities.append(City(row["city"], float(row["lat"]), float(row["lng"])))
     return cities
 
 cityreader(cities)
 
 # Print the list of cities (name, lat, lon), 1 record per line.
 for c in cities:
-    print(c)
+    print(c.name, c.lat, c.lon)
 
 # STRETCH GOAL!
 #
