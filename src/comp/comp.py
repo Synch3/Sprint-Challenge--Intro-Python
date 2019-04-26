@@ -46,7 +46,7 @@ c = []
 allowed = 'CDEFG'
 for x in humans:
     for y in allowed:
-        if x.name.startswith(allowed):
+        if x.name.startswith(y):
             c.append(x.name)
 print(c)
 
@@ -54,8 +54,7 @@ print(c)
 print("Ages plus 10:")
 d = []
 for x in humans:
-    if x.age > 10:
-        d.append(x.age)
+        d.append(x.age + 10)
 print(d)
 
 # Write a list comprehension that creates a list of strings which are the name
@@ -82,7 +81,7 @@ print(f)
 print("All names capitalized:")
 g = []
 for x in humans:
-    g.append(x)
+    g.append(Human(x.name.upper(), x.age+5))
 print(g)
 
 # Write a list comprehension that contains the square root of all the ages.
